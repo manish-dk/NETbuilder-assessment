@@ -4,6 +4,7 @@ import org.junit.Test;
 
 
 public class FamilyTest {
+	
 	@Test
 	public void familyTest() {
 		Family fam = new Family();

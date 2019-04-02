@@ -65,7 +65,7 @@ public class Family {
 		if(getDescendants(child,desc).contains(parent) || child.getName().equals(parent.getName())) return false;
 		for(Person par:child.getParents() ) {
 			if(par==null) continue;
-			if(par.getGender().equals(parent.getGender()) && !par.getName().equals(parentName)) return false;
+			if(par.getGender().equals(parent.getGender()) && !par.getName().equals(parentName) && !par.getGender().equals("")) return false;
 			if(par.getGender().equals("female") && !par.getName().equals(parentName)) parent.setGender("male");
 			if(par.getGender().equals("male") && !par.getName().equals(parentName)) parent.setGender("female");
 		}
