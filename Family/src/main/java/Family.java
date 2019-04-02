@@ -65,6 +65,7 @@ public class Family {
 		if(getDescendants(child,desc).contains(parent) || child.getName().equals(parent.getName())) return false;
 		for(Person par:child.getParents() ) {
 			if(par==null) continue;
+			if(par.getGender().equals(parent.getGender()) && !par.getName().equals(parentName)) return false;
 			if(par.getGender().equals("female") && !par.getName().equals(parentName)) parent.setGender("male");
 			if(par.getGender().equals("male") && !par.getName().equals(parentName)) parent.setGender("female");
 		}
@@ -79,6 +80,10 @@ public class Family {
 	public String[] getParents(String name) {
 		Person p = getPerson(name);
 		String[] parents = new String[2];
+		if(p.getParents()[1]==null) {
+			parents[0]=p.getParents()[0].getName();
+			return parents;
+		}
 		for(int i = 0; i<p.getParents()[0].getName().length() || i<p.getParents()[1].getName().length();i++) {
 			if(p.getParents()[0].getName().charAt(i)<p.getParents()[1].getName().charAt(i)) {
 				parents[0] = p.getParents()[0].getName();
