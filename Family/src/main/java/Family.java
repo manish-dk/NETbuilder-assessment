@@ -62,6 +62,7 @@ public class Family {
 		ArrayList<Person> desc = new ArrayList<Person>();
 		Person parent = getPerson(parentName);
 		Person child = getPerson(childName);
+		if(child.getParents()[0] != null && child.getParents()[1] != null) return false;
 		if(getDescendants(child,desc).contains(parent) || child.getName().equals(parent.getName())) return false;
 		for(Person par:child.getParents() ) {
 			if(par==null) continue;
